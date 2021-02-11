@@ -1,0 +1,82 @@
+.App {
+  text-align: center;
+  background: url("../../assets/img/bg-pattern.png"), #6a2e88;
+  background: url("../../assets/img/bg-pattern.png"), linear-gradient(to bottom, #6a2e88, #000);
+  width: 100vw;
+  height: 100vh;
+
+
+  display: flex;
+  flex-direction: row;
+
+  z-index: 1;
+}
+
+.info-container {
+  background-color: #fff;
+  border-radius: 1%;
+
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+  padding: 20px;
+
+  top: 24vh;
+  left: 15vw;
+  
+  display: flex;
+  flex-direction: column;
+
+  z-index: 2;
+}
+
+
+
+.button-next_container{
+  position: absolute;
+  display: none;
+}
+
+.chat-container {
+  position: absolute;
+  right: 15vw;
+  bottom: 0;
+}
+
+
+@media(max-width: 480px) {
+  .App {
+    flex-direction: column;
+    height: 180vh;
+    align-items: center;
+
+
+  
+  }
+
+  .info-container {
+    width: 80vw;
+    height: 75vh;
+    top: 40vh;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+    }
+
+  .button-next_container{
+    top: 80vh;
+  
+    width: 60vw;
+    height: 9vh;
+    display: block;
+    z-index: 3;    
+  }
+
+  .chat-container {
+    position: absolute;
+    bottom: -80vh;
+  }
+  
+  
+
+}
