@@ -9,11 +9,10 @@ const config = {
     lang: "no",
     step: "presentation_init",
     ansCount: 0,
-    b1: false,
-    b2: false,
-    b3: false,
-    b4: false,
-    b5: false,
+    ansHist: [
+      "default"
+    ],
+    totalQuestions: 6,
     customStyles: {
         botMessageBox: {
           backgroundColor: "#474747",
@@ -23,7 +22,7 @@ const config = {
         },
       },
       initialMessages: [
-        createChatBotMessage("Ola, eu sou o Goku."),
+        createChatBotMessage(messages.presentation_init()),
         createChatBotMessage(
           messages.askName_init(),
           {

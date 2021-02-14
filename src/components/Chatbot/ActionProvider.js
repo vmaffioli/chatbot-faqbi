@@ -117,6 +117,15 @@ class ActionProvider {
     })
   }
 
+  q06 = (msg) => {
+    message = [
+      this.createChatBotMessage(messages.q06_1(msg), { delay: 1000 }),
+    ];
+    message.forEach(e => {
+      this.addMessageToState(e);
+    })
+  }
+
 
 
   addMessageToState = (message) => {

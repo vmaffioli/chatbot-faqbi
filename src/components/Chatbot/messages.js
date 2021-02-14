@@ -160,6 +160,12 @@ const messages = {
         ]
         return randomize(msg);
     },
+    q06_1: () => { //habilidades tecnicas 
+        let msg = [
+            "a completar!"
+        ]
+        return randomize(msg);
+    },
     all_1: () => {
         let msg = [
             "Olha que bacana, já respondi todas perguntas que eu conheço! o/",

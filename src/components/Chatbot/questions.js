@@ -17,6 +17,8 @@ const questions = {
     compare: (question,key,qIn) => { 
         let bool = false;
         let result = false;
+        let counterTrue = 0
+        let counterFalse = 0
     
         key.forEach(e =>{
           if(qIn.includes(e)){
@@ -137,6 +139,17 @@ const questions = {
         let qKey = [
             "cinco5",
             "anos"
+        ]
+        return send(request,qContent,qKey)
+    },
+    habilidadesTecnicas: (request) => { 
+        let qContent = [
+            "Quais são suas habilidades técnicas ?",
+            "Me fale sobre suas habilidades técnicas ?"
+        ]
+        let qKey = [
+            "habilidades",
+            "técnicas"
         ]
         return send(request,qContent,qKey)
     },
