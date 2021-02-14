@@ -23,7 +23,7 @@ const config = {
         },
       },
       initialMessages: [
-        createChatBotMessage(messages.presentation_init()),
+        createChatBotMessage("Ola, eu sou o Goku."),
         createChatBotMessage(
           messages.askName_init(),
           {

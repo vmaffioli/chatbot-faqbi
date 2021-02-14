@@ -13,7 +13,14 @@ class ActionProvider {
     this.createClientMessage = createClientMessage;
   }
 
-
+  default = () => {
+    message = [
+      this.createChatBotMessage(messages.all_1(), { delay: 1000 })
+    ];
+    message.forEach(e => {
+      this.addMessageToState(e);
+    })
+  }
 
   presentation = (resultIsa, name) => {
     if (resultIsa) {
@@ -26,8 +33,8 @@ class ActionProvider {
       });
     } else {
       message = [
-        this.createChatBotMessage(messages.askName_finish("")),
-        this.createChatBotMessage(messages.presentation_finish(""), { delay: 500 })
+        this.createChatBotMessage(messages.askName_finish("$$IsaFalse%%")),
+        this.createChatBotMessage(messages.presentation_finish("$$IsaFalse%%"), { delay: 500 })
       ];
       message.forEach(e => {
         this.addMessageToState(e);
@@ -40,6 +47,15 @@ class ActionProvider {
     message = [
       this.createChatBotMessage(messages.all_1(msg), { delay: 18000 }),
       this.createChatBotMessage(messages.all_2(msg), { delay: 20000 })
+    ];
+    message.forEach(e => {
+      this.addMessageToState(e);
+    })
+  }
+
+  dont_know = () => {
+    message = [
+      this.createChatBotMessage(messages.dont_know(), { delay: 1000 })
     ];
     message.forEach(e => {
       this.addMessageToState(e);

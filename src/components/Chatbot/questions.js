@@ -10,8 +10,42 @@ function send(request,qContent,qKey){
     return result;
 }
 
+
+
+
 const questions = {
-    default: (request) => {
+    compare: (question,key,qIn) => { 
+        let bool = false;
+        let result = false;
+    
+        key.forEach(e =>{
+          if(qIn.includes(e)){
+            bool=true
+          } else {
+            bool=false
+          }
+        })
+        if(bool){
+          question.forEach(eachQ => {
+            eachQ = eachQ.split(" ")
+            let eqct = 0;
+    
+            eachQ.forEach(e => {
+              if(qIn.includes(e)){
+                eqct++
+              }
+            })
+            let iQIn = qIn.split(" ")
+            let calc = 70 / 100 * iQIn.length
+    
+            if(eqct>=iQIn.length){
+              result=true
+            }
+          })
+        }
+        return result;
+    },
+    default: (request) => { //example
         let qContent = []
         let qKey = []
         return send(request,qContent,qKey)
@@ -78,10 +112,13 @@ const questions = {
             "gostaria de saber sua pretensão salarial ?",
             "me informe sua pretensão salarial",
             "qual a sua pretensão salarial ? receber pagamento",
+            "qual a sua pretensão de salario ?",
+
+            
         ]
         let qKey = [
             "pretensão",
-            "salarial"
+            "salari"
         ]
         return send(request,qContent,qKey)
     },
@@ -93,7 +130,8 @@ const questions = {
             "onde você quer estar daqui cinco anos? 5",
             "como você quer ser daqui cinco anos ? 5",
             "onde você quer estar daqui a cinco anos ?",
-            "comoe você quer estar daqui a cinco anos ?"
+            "como você quer estar daqui a cinco anos ?",
+            "daqui 5 anos você se vê como ?"
 
         ]
         let qKey = [

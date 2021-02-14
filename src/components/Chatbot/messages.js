@@ -6,12 +6,25 @@ function randomize(array) {
     return array[rand]
 };
 
+
+
 const messages = {
-    default: () => {
+    default: () => { //example 
         let msg = [
             ""
         ]
         return randomize(msg);
+    },
+    default2: (param) => { // example with name
+        let msg
+        if (param === "$$IsaFalse%%") {
+            let msgWithoutName = []
+            msg = msgWithoutName
+        } else {
+            let msgWithName = []
+            msg = msgWithName
+        }
+        return randomize(msg)
     },
     presentation_init: () => {
         let msg = [
@@ -30,18 +43,48 @@ const messages = {
         return randomize(msg);
     },
     askName_finish: (param) => {
-        let msg = [
-            "Muito prazer em te conhecer " + param + "!",
-            "É um prazer te conhecer, " + param + "!",
-            "É um imenso prazer te conhecer, " + param + "!",
-        ]
+        let msg
+
+        if (param === "$$IsaFalse%%") {
+            let msgWithoutName = [
+                "Muito prazer em te conhecer!",
+                "É um prazer te conhecer!",
+                "É um imenso prazer te conhecer!",
+            ]
+            msg = msgWithoutName
+        } else {
+            let msgWithName = [
+                "Muito prazer em te conhecer " + param + "!",
+                "É um prazer te conhecer, " + param + "!",
+                "É um imenso prazer te conhecer, " + param + "!",
+            ]
+            msg = msgWithName
+        }
+
         return randomize(msg);
     },
     presentation_finish: (param) => {
+        let msg
+        if (param === "$$IsaFalse%%") {
+            let msgWithoutName = [
+                "O que deseja perguntar?",
+                "O que você gostaria de perguntar?",
+                "Vamos começar? qual a sua primeira pergunta?"
+            ]
+            msg = msgWithoutName
+        } else {
+            let msgWithName = [
+                param + ", o que deseja perguntar?",
+                "O que você gostaria de perguntar, " + param + "?",
+                "Vamos começar? qual a sua primeira pergunta, " + param + "?"
+            ]
+            msg = msgWithName
+        }
+        return randomize(msg);
+    },
+    dont_know: () => {
         let msg = [
-            param + ", o que deseja perguntar?",
-            "O que você gostaria de perguntar, " + param + "?",
-            "Vamos começar? qual a sua primeira pergunta, " + param + "?"
+            "Eu não conheço essa pergunta, me desculpa! Prometo que vou aprender a responder em breve!"
         ]
         return randomize(msg);
     },
@@ -116,7 +159,7 @@ const messages = {
             "vou carregar comigo a vontade de aprender e continuar avançando para ter autonomia de criação."
         ]
         return randomize(msg);
-    }, 
+    },
     all_1: () => {
         let msg = [
             "Olha que bacana, já respondi todas perguntas que eu conheço! o/",
@@ -127,11 +170,22 @@ const messages = {
         return randomize(msg);
     },
     all_2: (param) => {
-        let msg = [
-            param + ", caso queira perguntar novamente alguma coisa estou a disposição",
-            param + ", se precisar perguntar novamente algo é só me dizer",
-            param + ", mas se ainda quiser perguntar algo de novo, estou a disposição"
-        ]
+        let msg
+        if (param === "$$IsaFalse%%") {
+            let msgWithoutName = [
+                param + ", caso queira perguntar novamente alguma coisa estou a disposição",
+                param + ", se precisar perguntar novamente algo é só me dizer",
+                param + ", mas se ainda quiser perguntar algo de novo, estou a disposição"
+            ]
+            msg = msgWithoutName
+        } else {
+            let msgWithName = [
+                param + ", caso queira perguntar novamente alguma coisa estou a disposição",
+                param + ", se precisar perguntar novamente algo é só me dizer",
+                param + ", mas se ainda quiser perguntar algo de novo, estou a disposição"
+            ]
+            msg = msgWithName
+        }
         return randomize(msg);
     },
 
