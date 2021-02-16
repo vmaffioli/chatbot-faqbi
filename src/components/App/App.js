@@ -12,9 +12,12 @@ function App() {
     <div className="App">
 
       <div className="info-container">
-        <h1>Bem vindo(a) ao Vinibot!</h1>
-        <p>O objetivo do Vinibot é responder algumas perguntas frequentes em entrevistas de emprego.</p>
-        <p>Vinibot é uma aplicação React criada com pacote react-chatbot-kit(externo), isa-know-name(autoral), sistema simples para variação de respostas e função para analisar e comparar perguntas recebidas com as memorizadas.</p>
+        <h2>Bem vindo(a) ao Vinibot!</h2>
+        <p>O objetivo do Vinibot é responder perguntas frequentes em entrevistas. (!!!)Aqui é uma região de testes(!!!)</p>
+        <p>Vinibot é uma aplicação React criada com os pacotes react-chatbot-kit(externo) para renderizar o chat e isa-know-name(autoral) para distinguir nomes humanos, sistema simples para variação de respostas e sistema para analisar mensagens recebidas em duas etapas: <br/>com chaves multiniveis e após validação usa-se comparação percentual</p>
+        <br/>
+        <a href="https://github.com/vmaffioli/faqbi-client">GitHub - Repositório do projeto</a>
+        <a href="http://viniciusmaffioli.herokuapp.com/">Minha página pessoal</a>
       </div>
 
       <div className="chat-container">
