@@ -12,15 +12,17 @@ const config = {
     ansHist: [
       "default"
     ],
-    totalQuestions: 6,
+
     customStyles: {
         botMessageBox: {
-          backgroundColor: "#474747",
+          backgroundColor: "#cc0000",
         },
         chatButton: {
-          backgroundColor: "#474747",
+          backgroundColor: "#000",
         },
+        
       },
+
       initialMessages: [
         createChatBotMessage(messages.presentation_init()),
         createChatBotMessage(

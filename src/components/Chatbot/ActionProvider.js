@@ -45,8 +45,10 @@ class ActionProvider {
 
   all = (msg) => {
     message = [
-      this.createChatBotMessage(messages.all_1(msg), { delay: 18000 }),
-      this.createChatBotMessage(messages.all_2(msg), { delay: 20000 })
+      this.createChatBotMessage(messages.all_1(msg), { delay: 1000 }),
+      this.createChatBotMessage(messages.all_2(msg), { delay: 3000 }),
+      this.createChatBotMessage(messages.all_3(msg), { delay: 5000 })
+
     ];
     message.forEach(e => {
       this.addMessageToState(e);
@@ -120,6 +122,35 @@ class ActionProvider {
   q06 = (msg) => {
     message = [
       this.createChatBotMessage(messages.q06_1(msg), { delay: 1000 }),
+      this.createChatBotMessage(messages.q06_2(msg), { delay: 3000 }),
+      this.createChatBotMessage(messages.q06_3(msg), { delay: 5000 }),
+      this.createChatBotMessage(messages.q06_4(msg), { delay: 8000 }),
+
+    ];
+    message.forEach(e => {
+      this.addMessageToState(e);
+    })
+  }
+
+  q07 = (msg) => {
+    message = [
+      this.createChatBotMessage(messages.q07_1(msg), { delay: 1000 }),
+      this.createChatBotMessage(messages.q07_2(msg), { delay: 3000 }),
+      this.createChatBotMessage(messages.q07_3(msg), { delay: 5000 }),
+
+
+    ];
+    message.forEach(e => {
+      this.addMessageToState(e);
+    })
+  }
+
+  q08 = (msg) => {
+    message = [
+      this.createChatBotMessage(messages.q08_1(msg), { delay: 1000 }),
+      this.createChatBotMessage(messages.q08_2(msg), { delay: 3000 }),
+      this.createChatBotMessage(messages.q08_2(msg), { delay: 5000 }),
+
     ];
     message.forEach(e => {
       this.addMessageToState(e);
