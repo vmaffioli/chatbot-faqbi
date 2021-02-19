@@ -261,6 +261,7 @@ const questions = {
         let qContent = [
             "voce possui facil acesso a qual estaçao",
             "que estaçao voce possui acesso",
+            "que estaçao voce possui facil acesso",
             "qual estaçao mais proxima da sua casa",
             "qual estaçao mais proxima da sua residencia",
             "qual estaçao mais proxima de voce",

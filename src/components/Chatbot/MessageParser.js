@@ -19,6 +19,7 @@ class MessageParser {
 
     if (config.step === "presentation_init") {
       this.actionProvider.presentation(isaName.check(msg), isaName.filter(msg).toString());
+    
     } else if (config.step === "form_init") {
 
       if (questions.compare(questions.aboutMe('content'), questions.aboutMe('key'), message.normalize("NFD"))) {
