@@ -1,2 +1,2 @@
 # chatbot-faqbi
-Chatbot para responder perguntas frequentes em entrevistas, segundo o Glassdoor.
+Chatbot para testar recursos criados para o bot do meu perfil viniciusmaffioli.herokuapp.com
