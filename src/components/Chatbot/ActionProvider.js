@@ -1,6 +1,7 @@
 // ActionProvider starter code
 import config from './config';
-import messages from './messages';
+import messages from './core/messages';
+import memory from './core/memory.json';
 
 
 let message;
@@ -11,6 +12,50 @@ class ActionProvider {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
     this.createClientMessage = createClientMessage;
+  }
+
+  sendAnswer = (answersList) => {
+    const message = []
+    let receivedCode_all = false
+
+
+    if (answersList[0] === "%%all%%") {//temporario so para  retorno do 'que o bot consegue responder'
+      answersList = []
+
+      for (let i = 0; i < memory.length; i++) {
+        const questionDesc = memory[i].desc
+
+        if (i === 0) {
+          //answersList.push(messages.all)
+          answersList.push("Perguntas ou assuntos que eu sei responder:")
+
+        } else if ((i > 0) || (questionDesc.length > 0)) {
+          answersList.push(questionDesc)
+        }
+      }
+      receivedCode_all = true //arrumar
+
+    } 
+
+    for (let i = 0; i < answersList.length; i++) { //separa as respostas
+      const answer = answersList[i]
+      let delayValue = 1000 //  tempo inicial do delay
+
+      if (receivedCode_all) { // seta fixo para retornar oq sabe responder
+        if (i > 0) {
+          delayValue = delayValue + (i * 333) //tempo acumulado do delay para %%all%%
+        }
+      } else {
+        if (i > 0) {
+          delayValue = delayValue + (i * 3000) //tempo acumulado do delay
+        }
+      }
+
+      message.push(this.createChatBotMessage(answer, { delay: delayValue })) //monta o message 
+    }
+    message.forEach(e => { //envia o message
+      this.addMessageToState(e);
+    })
   }
 
   default = () => {
@@ -24,6 +69,7 @@ class ActionProvider {
 
   presentation = (resultIsa, name) => {
     if (resultIsa) {
+
       message = [
         this.createChatBotMessage(messages.askName_finish(name)),
         this.createChatBotMessage(messages.presentation_finish(name), { delay: 500 })
@@ -43,18 +89,6 @@ class ActionProvider {
     config.step = "form_init"
   }
 
-  all = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.all_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.all_2(msg), { delay: 3000 }),
-      this.createChatBotMessage(messages.all_3(msg), { delay: 5000 })
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
   dont_know = () => {
     message = [
       this.createChatBotMessage(messages.dont_know(), { delay: 1000 })
@@ -63,100 +97,6 @@ class ActionProvider {
       this.addMessageToState(e);
     })
   }
-
-  q01 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q01_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q01_2(msg), { delay: 4000 }),
-      this.createChatBotMessage(messages.q01_3(msg), { delay: 8000 })
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q02 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q02_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q02_2(msg), { delay: 4000 })
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q03 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q03_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q03_2(msg), { delay: 4000 })
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q04 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q04_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q04_2(msg), { delay: 4000 })
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q05 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q05_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q05_2(msg), { delay: 4000 }),
-      this.createChatBotMessage(messages.q05_3(msg), { delay: 7000 })
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q06 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q06_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q06_2(msg), { delay: 3000 }),
-      this.createChatBotMessage(messages.q06_3(msg), { delay: 5000 }),
-      this.createChatBotMessage(messages.q06_4(msg), { delay: 8000 }),
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q07 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q07_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q07_2(msg), { delay: 3000 }),
-      this.createChatBotMessage(messages.q07_3(msg), { delay: 5000 }),
-
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
-  q08 = (msg) => {
-    message = [
-      this.createChatBotMessage(messages.q08_1(msg), { delay: 1000 }),
-      this.createChatBotMessage(messages.q08_2(msg), { delay: 3000 }),
-      this.createChatBotMessage(messages.q08_2(msg), { delay: 5000 }),
-
-    ];
-    message.forEach(e => {
-      this.addMessageToState(e);
-    })
-  }
-
 
 
   addMessageToState = (message) => {
