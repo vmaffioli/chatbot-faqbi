@@ -1,2 +1,1 @@
-# chatbot-faqbi
-Chatbot para testar recursos criados para o bot do meu perfil viniciusmaffioli.herokuapp.com
+Simple chatbot, used as a testing ground for the chatbot in my web profile.
